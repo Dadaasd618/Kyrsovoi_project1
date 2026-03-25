@@ -1,0 +1,154 @@
+﻿<Window x:Class="PersonnelManagement.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Вход в систему"
+        Width="420" Height="420"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+
+    <Grid>
+
+        <!-- фон -->
+        <Border CornerRadius="28">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#140A2D" Offset="0"/>
+                    <GradientStop Color="#0B0820" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <!-- glow -->
+            <Grid>
+                <Ellipse Width="520" Height="520" Fill="#407A2EFF" Margin="-260,-260,0,0">
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="180"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+                <Ellipse Width="520" Height="520" Fill="#40C14DFF"
+                         HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                         Margin="0,0,-260,-260">
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="180"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+
+                <!-- стеклянная карточка -->
+                <Border CornerRadius="22"
+                        Background="#16FFFFFF"
+                        BorderBrush="#33FFFFFF"
+                        BorderThickness="1"
+                        Margin="22"
+                        Padding="18">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="28" ShadowDepth="10" Opacity="0.22"/>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="18"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- title bar -->
+                        <Grid Grid.Row="0" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Вход в систему"
+                                       Foreground="#F3F1FF"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+
+                            <Button Grid.Column="2"
+                                    Width="40" Height="30"
+                                    Background="#22FFFFFF"
+                                    BorderThickness="0"
+                                    Foreground="White"
+                                    Content="—"
+                                    Click="Minimize_Click"/>
+
+                            <Button Grid.Column="4"
+                                    Width="40" Height="30"
+                                    Background="#22FFFFFF"
+                                    BorderThickness="0"
+                                    Foreground="White"
+                                    Content="✕"
+                                    Click="Close_Click"/>
+                        </Grid>
+
+                        <!-- form -->
+                        <StackPanel Grid.Row="2" Margin="0,6,0,0">
+
+                            <TextBlock Text="Логин" Foreground="#CFC7EE" Margin="0,0,0,6"/>
+                            <TextBox x:Name="TbLogin"
+                                     Height="40"
+                                     Background="#1EFFFFFF"
+                                     BorderBrush="#33FFFFFF"
+                                     BorderThickness="1"
+                                     Foreground="White"
+                                     Padding="14,6"
+                                     />
+
+                            <TextBlock Text="Пароль" Foreground="#CFC7EE" Margin="0,14,0,6"/>
+                            <PasswordBox x:Name="PbPassword"
+                                         Height="40"
+                                         Background="#1EFFFFFF"
+                                         BorderBrush="#33FFFFFF"
+                                         BorderThickness="1"
+                                         Foreground="White"
+                                         Padding="14,6"/>
+
+                            <TextBlock x:Name="TbError"
+                                       Foreground="#FFFF6B6B"
+                                       Margin="0,10,0,0"
+                                       TextWrapping="Wrap"/>
+
+                            <!-- кнопка -->
+                            <Button Content="Авторизоваться"
+                                    Height="52"
+                                    Margin="0,16,0,0"
+                                    BorderThickness="0"
+                                    Foreground="White"
+                                    FontWeight="SemiBold"
+                                    Click="Login_Click">
+                                <Button.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF7A2EFF" Offset="0"/>
+                                        <GradientStop Color="#FFC14DFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="22"
+                                                Background="{TemplateBinding Background}">
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="#AA7A2EFF"
+                                                                  BlurRadius="26"
+                                                                  ShadowDepth="0"
+                                                                  Opacity="0.45"/>
+                                            </Border.Effect>
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
